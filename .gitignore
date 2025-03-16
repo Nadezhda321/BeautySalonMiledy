@@ -1,0 +1,6 @@
+# folder with dependencies
+venv
+
+# Config files
+.env
+*.conf
