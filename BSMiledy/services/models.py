@@ -16,7 +16,8 @@ class Service(models.Model):
     ]
 
     name = models.CharField('Наименование', max_length=100, default='Новая услуга')
-    description = models.CharField('Описание', max_length=250)
+    # description = models.CharField('Описание', max_length=250)
+    description = models.TextField('Описание', max_length=750, null=True)
     photo = models.ImageField('Фото', null=True, upload_to='services/')
 
     type_service = models.ForeignKey(TypeService, on_delete=models.CASCADE, related_name='services', verbose_name='Вид услуги')

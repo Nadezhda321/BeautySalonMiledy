@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import TypeService, Service, PhotoService
 
-# Register your models here.
+admin.site.register(TypeService)
+admin.site.register(Service)
+admin.site.register(PhotoService)
