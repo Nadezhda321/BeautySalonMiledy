@@ -1,0 +1,14 @@
+{% extends  'main/layout.html' %}
+
+{% block title_page %}Услуги{% endblock %}
+
+{% block content %}
+<h1>Услуги</h1>
+    <ul> 
+        <li>Ногтевой сервис</li>
+        <li>Косметология</li>
+        <li>Уход за волосами</li>
+    </ul>
+    <p><a href="{% url 'index' %}">Перейти на страницу услуг</a></p>
+
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block title_page %}Миледи{% endblock %}
 
 {% block content %}
-<h1>Главная страница</h1>
+<h1>Главная</h1>
     <ul>
         <li>Шапка</li>
         <li>Главный банер</li>
@@ -14,4 +14,6 @@
         <li>Отзывы</li>
         <li>Подвал</li>
     </ul>
+    <p><a href="{% url 'services_home' %}">Перейти на страницу услуг</a></p>
+
 {% endblock %}

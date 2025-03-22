@@ -20,6 +20,11 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+#для загрузки изображений пользователем
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -36,6 +41,7 @@ ALLOWED_HOSTS = [] #доменные имена где можно публико
 
 INSTALLED_APPS = [
     'main',
+    'services',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,7 +142,6 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    #"/var/www/static/", - понадобиться только для папочек которые хранятся исключительно на сервере
 ]
 
 # Default primary key field type
