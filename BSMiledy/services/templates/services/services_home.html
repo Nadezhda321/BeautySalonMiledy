@@ -11,4 +11,11 @@
     </ul>
     <p><a href="{% url 'index' %}">Перейти на страницу услуг</a></p>
 
+    {% for el in service %}
+        <div class="service_card">
+            <h3>{{ el.name }}</h3>
+            <h5>{{ el.description }}</h5>
+        </div>
+    {% endfor %}
+
 {% endblock %}

@@ -38,8 +38,9 @@ class PhotoService(models.Model):
     photo = models.ImageField('Фото', upload_to='gallery/')
     type_service = models.ForeignKey(TypeService, on_delete=models.CASCADE, related_name='gallery_images', verbose_name='Вид услуги')
     
+    #Какая информация будет выводиться когда мы выводим сам по себе объект
     def __str__(self):
-        return f"Фото для {self.service_type.name} ({self.upload_date})"
+        return f"Фото для {self.type_service.name} ({self.date_add})"
 
     class Meta:
         verbose_name = 'Фотогалерея'

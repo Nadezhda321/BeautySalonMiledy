@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 import os
 
@@ -42,6 +43,7 @@ ALLOWED_HOSTS = [] #доменные имена где можно публико
 INSTALLED_APPS = [
     'main',
     'services',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,3 +150,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#если пользователь не смог авторизоваться его будет возвращать на страницу авторизации
+LOGIN_REDIRECT_URL = reverse_lazy("users:profile")
