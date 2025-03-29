@@ -8,11 +8,14 @@
         <div class="form_auth_block_content">
           <p class="form_auth_block_head_text">Авторизация</p>
           <form class="form_auth_style" action="#" method="post">
+            {% csrf_token %}
             <label>Введите Ваш имейл</label>
-            <input type="email" name="auth_email" placeholder="Введите Ваш имейл" required >
+            <input type="text" name="username" placeholder="Введите Ваш имейл" required >
             <label>Введите Ваш пароль</label>
-            <input type="password" name="auth_pass" placeholder="Введите пароль" required >
+            <input type="password" name="password" placeholder="Введите пароль" required >
+            {{ form.errors }}
             <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
+<!--             <p><a href="{% url 'main:index' %}">Зарегистрироваться</a></p> -->
           </form>
         </div>
       </div>

@@ -151,5 +151,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#если пользователь не смог авторизоваться его будет возвращать на страницу авторизации
+
 LOGIN_REDIRECT_URL = reverse_lazy("users:profile")
+# LOGIN_URL = "users:login"
