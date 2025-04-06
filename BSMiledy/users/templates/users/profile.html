@@ -5,11 +5,16 @@
 {% block content %}
 <h1>Профиль пользователя</h1>
 <p>Привет, {{ user.username }}!</p>
+<p>Ваша почта: {{ user.email }}!</p>
 
-<!-- <button onclick="location.href='{% url 'logout' %}?next=/users/profile'">Выйти</button> -->
 <form action="{% url 'logout' %}?next=/users/profile" method="post">
     {% csrf_token %}
     <button type="submit">Выйти из профиля</button>
+</form>
+
+<form action="{% url 'password_change' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Сменить пароль</button>
 </form>
 
 <p><a href="{% url 'main:index' %}">Перейти на главную страницу</a></p>

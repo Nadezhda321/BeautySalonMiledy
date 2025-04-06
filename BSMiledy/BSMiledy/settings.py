@@ -158,3 +158,14 @@ LOGIN_REDIRECT_URL = reverse_lazy("users:profile")
 
 #ссылка на модель использующуюся для авторизации пользователей
 AUTH_USER_MODEL = 'users.Client'
+
+
+#почтовый клиент
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'Nadya2zhuk@yandex.ru'
+EMAIL_HOST_PASSWORD = 'rolbmhiitfednclk'
+DEFOULT_FROM_EMAIL = 'Nadya2zhuk@yandex.ru'
