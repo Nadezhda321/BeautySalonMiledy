@@ -1,0 +1,35 @@
+{% extends  'main/layout.html' %}
+
+{% block title_page %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="registration-cssave">
+    <h3 class="text-center">Форма входа</h3>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Имя" required > <br>
+
+        <input type="text" name="lastname" placeholder="Фамилия" required ><br>
+
+        <input type="email" name="email" placeholder="Электронная почта" required ><br>
+
+        <input type="tel" name="tel" placeholder="Контактный телефон" required ><br>
+
+        <input type="password" name="password1" placeholder="Введите пароль" required ><br>
+        <input type="password" name="password2" placeholder="Повторите пароль" required ><br>
+        
+        <label class="anim">
+            <input type="checkbox" class="checkbox" required="">
+            <span>Я согласен с политикой перс данных</span>
+        </label>
+
+        <input type="submit" value="Зарегистрироваться">
+        
+        {{ form.errors }}
+
+        <p><a href="{% url 'users:profile' %}">Уже есть профиль? Войти.</a></p>
+        
+
+    </form>
+</div>
+{% endblock %}
