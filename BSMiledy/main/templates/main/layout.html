@@ -9,6 +9,7 @@
     <title>{% block title %}{% endblock %} | Миледи </title>
     <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'users/css/register.css' %}">
     {% block link %}{% endblock %}
 </head>
 <body>
@@ -24,15 +25,15 @@
             <ul class="header__menu">
                 <li><a href="{% url 'main:index' %}">Главная</a></li>
                 <li><a href="{% url 'services:services_home' %}">Услуги</a></li>
-                <li><a href="">Фотогаллерея работ</a></li>
+                <li><a href="{% url 'services:gallery' %}">Фотогаллерея работ</a></li>
                 <li><a href="">Контакты</a></li>
             </ul>
         </nav>
 
         <div class="header__right-group">
             <div class="header__profile">
-                <a href="{% url 'users:profile' %}" class="header__profile-link" aria-label="Профиль">
-                    <img src="{% static 'main/img/profile.svg' %}" alt="Профиль" width="24" height="24">
+                <a href="{% url 'users:profile' %}" class="header__profile-link" aria-label="Профиль"> 
+                    <img src="{% static 'main/img/profile.svg' %}" alt="Профиль" width="24" height="24">Профиль
                 </a>
             </div>
             <button class="burger-menu" aria-label="Меню" aria-expanded="false">
@@ -57,7 +58,7 @@
                 <p><b>Новым клиентам</b></p>
                 <p><a href="{% url 'main:index' %}#advantages">О нас</a></p>
                 <p><a href="">Онлайн-запись</a></p>
-                <p><a href="">Наши работы</a></p>
+                <p><a href="{% url 'services:gallery' %}#advantages">Наши работы</a></p>
             </div>
             <div class="footer__text">
                 <p><b>Наши услуги</b></p>

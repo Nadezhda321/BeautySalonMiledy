@@ -1,8 +1,10 @@
 {% extends 'main/layout.html' %}
-
-{% block title_page %}Регистрация{% endblock %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="{% static 'users/css/register.css' %}">{% endblock %}
+{% block title %}Регистрация{% endblock %}
 
 {% block content %}
+<div class="register">
 <div class="registration-cssave">
     <h3 class="text-center">Форма регистрации</h3>
     <form method="post">
@@ -38,7 +40,9 @@
         
         <label>
             {{ form.consent_pd }}
-            <span>Я согласен с политикой обработки персональных данных</span>
+            <span>Согласен с <a href="{% url 'main:politics' %}#agree">обработкой персональных данных</a> и <a href="{% url 'main:politics' %}">политикой конфиденциальности</a></span>
+
+            
         </label>
         {{ form.consent_pd.errors }}<br>
         
@@ -46,7 +50,8 @@
         
         {{ form.non_field_errors }}
 
-        <p><a href="{% url 'users:login' %}">Уже есть аккаунт? Войти.</a></p>
+        <p><a href="{% url 'users:profile' %}">Уже есть аккаунт? Войти.</a></p>
     </form>
+</div>
 </div>
 {% endblock %}

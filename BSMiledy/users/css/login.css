@@ -1,0 +1,124 @@
+/* Основные стили страницы входа */
+.form_auth_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.form_auth_block_content {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form_auth_block_head_text {
+    color: #FF0099;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form_auth_style {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form_auth_style label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: -15px;
+}
+
+.form_auth_style input {
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form_auth_style input:focus {
+    border-color: #FF0099;
+    box-shadow: 0 0 0 3px rgba(255, 0, 153, 0.1);
+    outline: none;
+}
+
+.form_auth_style input::placeholder {
+    color: #aaa;
+}
+
+.form_auth_button {
+    background-color: #FF0099;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.form_auth_button:hover {
+    background-color: #e0008a;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: -15px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.form_auth_style p {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.form_auth_style a {
+    color: #FF0099;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form_auth_style a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+    .form_auth_block_content {
+        padding: 30px 20px;
+    }
+    
+    .form_auth_block_head_text {
+        font-size: 20px;
+    }
+    
+    .form_auth_style input {
+        padding: 12px 14px;
+    }
+    
+    .form_auth_button {
+        padding: 12px;
+    }
+}

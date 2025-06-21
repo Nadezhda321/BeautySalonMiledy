@@ -1,25 +1,52 @@
-{% extends  'main/layout.html' %}
-
-{% block title_page %}Авторизация{% endblock %}
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="{% static 'users/css/login.css' %}">{% endblock %}
+{% block title %}Вход{% endblock %}
 
 {% block content %}
-    <h1>Войти в профиль</h1>
     <div class="form_auth_block">
         <div class="form_auth_block_content">
-          <p class="form_auth_block_head_text">Авторизация</p>
-          <form class="form_auth_style" action="#" method="post">
-            {% csrf_token %}
-            <label>Введите Ваш имейл</label>
-            <input type="text" name="username" placeholder="Введите Ваш имейл" required >
-            <label>Введите Ваш пароль</label>
-            <input type="password" name="password" placeholder="Введите пароль" required >
-            {{ form.errors }}
-            <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
-            <p><a href="{% url 'users:register' %}">Зарегистрироваться</a></p>
-            <p>или</p>
-            <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
-          </form>
+            <p class="form_auth_block_head_text">Войти в профиль</p>
+            <form class="form_auth_style" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <label>Введите Ваш email</label>
+                <input type="email" name="username" placeholder="Введите Ваш email" required
+                       value="{% if form.username.value %}{{ form.username.value }}{% endif %}">
+                
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <label>Введите Ваш пароль</label>
+                <input type="password" name="password" placeholder="Введите пароль" required>
+                
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
+                
+                <p>Уже есть аккаунт? <a href="{% url 'users:register' %}">Зарегистрироваться</a></p>
+                <!-- <p>или</p>
+                <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p> -->
+            </form>
         </div>
-      </div>
-
+    </div>
 {% endblock %}

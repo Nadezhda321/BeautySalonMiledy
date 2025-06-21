@@ -1,0 +1,55 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Фото работ{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'services/css/gallery.css' %}">{% endblock %}
+
+{% block content %}
+<h1>Наши работы</h1>
+
+<section class="gallery-section">
+    <div class="gallery-filter">
+        <button class="filter-btn active" data-filter="all">Все фото</button>
+        {% for service in services %}
+        <button class="filter-btn" data-filter="service-{{ service.id }}">{{ service.name }}</button>
+        {% endfor %}
+    </div>
+
+    <div class="gallery-container">
+        {% for photo in photos %}
+        <div class="gallery-item" data-category="service-{{ photo.type_service.id }}">
+            <img src="{{ photo.photo.url }}" alt="{{ photo.type_service.name }}" loading="lazy">
+            <div class="service-overlay">{{ photo.type_service.name }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Удаляем активный класс у всех кнопок
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            galleryItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}
+
+
+

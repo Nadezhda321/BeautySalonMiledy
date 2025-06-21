@@ -1,0 +1,665 @@
+/* Основные стили слайдера */
+.slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slider__container {
+    width: 100%;
+    height: 500px; /* Вы можете изменить высоту по своему вкусу */
+    position: relative;
+}
+
+.slider__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.slider__slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+}
+
+/* Фоновые изображения для слайдов */
+.slider__slide:nth-child(1) {
+    background: url('../img/slide1.png') center/cover no-repeat;
+}
+
+.slider__slide:nth-child(2) {
+    background: url('../img/slide2.png') center/cover no-repeat;
+}
+
+.slider__slide:nth-child(3) {
+    background: url('../img/slide3.png') center/cover no-repeat;
+}
+
+/* Контент слайда */
+.slider__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.673);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; /* Изменено с max-width на width для более предсказуемого поведения */
+    box-sizing: border-box;
+}
+
+.slider__title {
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+    color: #FF0099;
+}
+
+.slider__text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.slider__button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #FF0099;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.slider__button:hover {
+    background-color: #d80082;
+}
+
+/* Навигация */
+.slider__nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.slider__nav-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.slider__nav-btn:hover {
+    background: #FF0099;
+    color: white;
+}
+
+.slider__dots {
+    display: flex;
+    gap: 10px;
+}
+
+.slider__dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider__dot.active {
+    background: #FF0099;
+}
+
+/* Секция "Наши преимущества" */
+.advantages {
+    padding: 60px 0;
+    background-image: url('../img/advantages-bg.png');
+    border-radius: 20px;
+    margin: 50px 0 0 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #FF0099;
+    margin-bottom: 40px;
+}
+
+.advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.advantage {
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.advantage:hover {
+    transform: translateY(-5px);
+}
+
+.advantage__icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.advantage__title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Секция скидки */
+.discount-section {
+    padding: 60px 0;
+    background: white;
+}
+
+.discount-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.discount-icon {
+    flex: 0 0 150px; /* Исправлено с 20px на 150px */
+    padding-right: 10px;
+}
+
+.discount-icon img {
+    width: 100%;
+    height: auto;
+    max-width: 100px; /* Добавлено ограничение максимальной ширины */
+}
+
+.discount-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-info {
+    margin-bottom: 20px;
+}
+
+.discount-title {
+    color: #FF0099;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.discount-text {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.discount-action {
+    align-self: flex-start;
+}
+
+.discount-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #FF0099;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.discount-btn:hover {
+    background: #e0008a;
+    transform: translateY(-2px);
+}
+
+.specialists {
+    padding: 50px 0;
+}
+
+.specialists__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.certificate {
+    flex: 1;
+    min-width: 300px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 10px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.specialists__info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.specialists__title {
+    font-size: 2rem;
+    color: #FF0099;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.specialists__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background-color: #FF0099;
+}
+
+.specialists__text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.specialists__button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #FF0099;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.specialists__button:hover {
+    background-color: #e0008a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 0, 153, 0.3);
+}
+
+.reviews {
+    padding: 80px 0;
+    background-image: url('../img/advantages-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin: 50px 0;
+    position: relative;
+}
+
+.reviews::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+}
+
+.reviews .container {
+    position: relative;
+    z-index: 1;
+}
+
+.review-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    border: 1px solid #f0f0f0;
+}
+
+.review-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.review-card__photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #FF0099;
+}
+
+.review-card__name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FF0099;
+}
+
+.review-card__text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+    flex-grow: 1;
+}
+
+/* Стили для слайдера отзывов */
+.reviews-slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.reviews-slider__container {
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.reviews-slider__wrapper {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.reviews-slider__slide {
+    min-width: calc(33.333% - 20px);
+    flex: 0 0 calc(33.333% - 20px);
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.reviews-slider__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.reviews-slider__nav-btn {
+    background: #FF0099;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviews-slider__nav-btn:hover {
+    background: #d80082;
+}
+
+.reviews-slider__dots {
+    display: flex;
+    gap: 10px;
+}
+
+.reviews-slider__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d8a0c7;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.reviews-slider__dot.active {
+    background: #FF0099;
+}
+
+@media (max-width: 768px) {
+    .slider__container {
+        height: 400px;
+    }
+    
+    .slider__content {
+        width: 90%; /* Шире на мобилках */
+        padding: 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .slider__title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        line-height: 1.3; /* Лучшая читаемость */
+    }
+    
+    .slider__text {
+        font-size: 0.9rem; /* Чуть уменьшим шрифт чтобы вмещалось больше текста */
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    
+    .slider__button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .slider__nav {
+        bottom: 15px;
+    }
+
+    .advantages {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .advantages__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .advantage__icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .discount-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .discount-icon {
+        padding-right: 0;
+    }
+    
+    .discount-content {
+        align-items: center;
+    }
+    
+    .discount-action {
+        align-self: center;
+    }
+
+    .specialists__content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .certificate {
+        height: 200px;
+        width: 100%;
+    }
+    
+    .certificate__image {
+        object-fit: cover;
+    }
+    
+    .specialists__info {
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .specialists__title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .reviews-slider__slide {
+        min-width: calc(100% - 20px);
+        flex: 0 0 calc(100% - 20px);
+    }
+    
+    .review-card {
+        padding: 20px;
+    }
+    
+    .review-card__photo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .review-card__name {
+        font-size: 1.1rem;
+    }
+    
+    .review-card__text {
+        font-size: 0.9rem;
+    }
+    
+    .reviews {
+        margin: 30px 0;
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider__container {
+        height: 350px;
+    }
+    
+    .slider__content {
+        width: 90%; /* Максимально широко на маленьких экранах */
+        padding: 12px;
+    }
+    
+    .slider__title {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .slider__text {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .slider__button {
+        padding: 6px 12px;
+    }
+
+    .advantages__grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .advantage {
+        padding: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .discount-box {
+        padding: 20px;
+    }
+    
+    .discount-title {
+        font-size: 1.5rem;
+    }
+    
+    .discount-text {
+        font-size: 1rem;
+    }
+    
+    .discount-btn {
+        padding: 10px 25px;
+    }
+
+     .specialists {
+        padding: 30px 0;
+    }
+    
+    .certificate {
+        height: 100px;
+    }
+    
+    .specialists__title {
+        font-size: 1.8rem;
+    }
+    
+    .specialists__text {
+        font-size: 1rem;
+    }
+    .review-card {
+        padding: 20px;
+    }
+    
+    .review-card__photo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .review-card__name {
+        font-size: 1.1rem;
+    }
+    
+    .review-card__text {
+        font-size: 0.9rem;
+    }
+}
