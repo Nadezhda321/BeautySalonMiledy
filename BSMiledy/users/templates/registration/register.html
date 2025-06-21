@@ -1,35 +1,52 @@
-{% extends  'main/layout.html' %}
+{% extends 'main/layout.html' %}
 
 {% block title_page %}Регистрация{% endblock %}
 
 {% block content %}
 <div class="registration-cssave">
-    <h3 class="text-center">Форма входа</h3>
+    <h3 class="text-center">Форма регистрации</h3>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Имя" required > <br>
-
-        <input type="text" name="lastname" placeholder="Фамилия" required ><br>
-
-        <input type="email" name="email" placeholder="Электронная почта" required ><br>
-
-        <input type="tel" name="tel" placeholder="Контактный телефон" required ><br>
-
-        <input type="password" name="password1" placeholder="Введите пароль" required ><br>
-        <input type="password" name="password2" placeholder="Повторите пароль" required ><br>
         
-        <label class="anim">
-            <input type="checkbox" class="checkbox" required="">
-            <span>Я согласен с политикой перс данных</span>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}<br>
+        
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+        {{ form.first_name.errors }}<br>
+        
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+        {{ form.last_name.errors }}<br>
+        
+        {{ form.phone.label_tag }}
+        {{ form.phone }}
+        {{ form.phone.errors }}<br>
+        
+        {{ form.birth_date.label_tag }}
+        {{ form.birth_date }}
+        {{ form.birth_date.errors }}<br>
+        
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password1.errors }}<br>
+        
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}<br>
+        
+        <label>
+            {{ form.consent_pd }}
+            <span>Я согласен с политикой обработки персональных данных</span>
         </label>
-
+        {{ form.consent_pd.errors }}<br>
+        
         <input type="submit" value="Зарегистрироваться">
         
-        {{ form.errors }}
+        {{ form.non_field_errors }}
 
-        <p><a href="{% url 'users:profile' %}">Уже есть профиль? Войти.</a></p>
-        
-
+        <p><a href="{% url 'users:login' %}">Уже есть аккаунт? Войти.</a></p>
     </form>
 </div>
 {% endblock %}

@@ -9,7 +9,7 @@
         <li>Косметология</li>
         <li>Уход за волосами</li>
     </ul>
-    <p><a href="{% url 'index' %}">Перейти на страницу услуг</a></p>
+    <p><a href="{% url 'main:index' %}">Перейти на главную</a></p>
 
     {% for el in service %}
         <div class="service_card">

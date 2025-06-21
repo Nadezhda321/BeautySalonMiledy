@@ -5,5 +5,4 @@ app_name = 'users'
 
 urlpatterns = [
    path('profile', views.profile, name='profile'),
-   path('register', views.RegiserView.as_view(), name='register'),
 ]

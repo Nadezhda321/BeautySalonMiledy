@@ -3,12 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block  title_page %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
+    <meta name="description" content="Салон красоты Миледи в Батайске: профессиональный ногтевой сервис, парикмахерские услуги и косметология. Запись онлайн.">
+    <link rel="canonical" href="https://miledybuauty.ru{% block canonical %}{% endblock %}" />
     
+    <title>{% block title %}{% endblock %} | Миледи </title>
+    <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block link %}{% endblock %}
 </head>
 <body>
-    {% block  content %}
-    {% endblock %}
+    <header class="header">
+    <div class="header__container">
+        <div class="header__logo">
+            <a href="/" aria-label="На главную">
+                <img src="{% static 'main/img/logo.svg' %}" alt="Логотип компании" width="120" height="40">
+            </a>
+        </div>
+
+        <nav class="header__nav">
+            <ul class="header__menu">
+                <li><a href="{% url 'main:index' %}">Главная</a></li>
+                <li><a href="{% url 'services:services_home' %}">Услуги</a></li>
+                <li><a href="">Фотогаллерея работ</a></li>
+                <li><a href="">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <div class="header__right-group">
+            <div class="header__profile">
+                <a href="{% url 'users:profile' %}" class="header__profile-link" aria-label="Профиль">
+                    <img src="{% static 'main/img/profile.svg' %}" alt="Профиль" width="24" height="24">
+                </a>
+            </div>
+            <button class="burger-menu" aria-label="Меню" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+    
+    <main class="main-content">
+        <div class="main__container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__logo">
+                <img src="{% static 'main/img/logo.svg' %}" alt="Логотип">
+            </div>
+            <div class="footer__text">
+                <p><b>Новым клиентам</b></p>
+                <p><a href="{% url 'main:index' %}#advantages">О нас</a></p>
+                <p><a href="">Онлайн-запись</a></p>
+                <p><a href="">Наши работы</a></p>
+            </div>
+            <div class="footer__text">
+                <p><b>Наши услуги</b></p>
+                <p><a href="">Ногтевой сервис</a></p>
+                <p><a href="">Парихмахерские услуги</a></p>
+                <p><a href="">Косметология</a></p>
+            </div>
+            <div class="footer__text">
+                <p><b>Контакты</b></p>
+                <p>Адрес: г. Батайск, ДНТ "Труд", ул. 8-я линия, д. 601</p>
+                <p>Тел. 8 (909) 420-12-15</p>
+                <p><a href="{% url 'main:politics' %}">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const headerMenu = document.querySelector('.header__menu');
+            
+            burgerMenu.addEventListener('click', function() {
+                headerMenu.classList.toggle('show');
+            });
+        });
+    </script>
 </body>
 </html>

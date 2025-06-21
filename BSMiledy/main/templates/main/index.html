@@ -1,20 +1,217 @@
-{% extends  'main/layout.html' %}
+{% extends 'main/layout.html' %}
+{% load static %}
 
-{% block title_page %}Миледи{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'main/css/index.css' %}">{% endblock %}
+
+{% block title %}Главная{% endblock %}
 
 {% block content %}
-<h1>Главная</h1>
-    <ul>
-        <li>Шапка</li>
-        <li>Главный банер</li>
-        <li>Банер-акция</li>
-        <li>Преимущества</li>
-        <li>Специалисты</li>
-        <li>Услуги</li>
-        <li>Отзывы</li>
-        <li>Подвал</li>
-    </ul>
-    <p><a href="{% url 'services:services_home' %}">Перейти на страницу услуг</a></p>
-    <p><a href="{% url 'users:profile' %}">Войти в профиль</a></p>
+<section class="slider">
+    <div class="slider__container">
+        <div class="slider__wrapper">
+            <div class="slider__slide active">
+                <div class="slider__content">
+                    <h2 class="slider__title">Скидка 10% на первое посещение!</h2>
+                    <p class="slider__text">Запишитесь через личный кабинет на нашем сайте на любую услугу и получите скидку 10% на первое посещение салона.</p>
+                    <a href="#" class="slider__button">Записаться</a>
+                </div>
+            </div>
+            
+            <div class="slider__slide">
+                <div class="slider__content">
+                    <h2 class="slider__title">Широкий выбор услуг</h2>
+                    <p class="slider__text">Косметология, ногтевой сервис, парихмахерское дело. Подготовьтесь к любому мероприятию в одном салоне.</p>
+                    <a href="#" class="slider__button">Каталог услуг</a>
+                </div>
+            </div>
+            
+            <div class="slider__slide">
+                <div class="slider__content">
+                    <h2 class="slider__title">У нас работают профессионалы</h2>
+                    <p class="slider__text">Каждый сотрудник является квалифицированным специалистом в своей области.</p>
+                    <a href="#" class="slider__button">О салоне</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="slider__nav">
+            <button class="slider__nav-btn prev">&lt;</button>
+            <div class="slider__dots">
+                <span class="slider__dot active"></span>
+                <span class="slider__dot"></span>
+                <span class="slider__dot"></span>
+            </div>
+            <button class="slider__nav-btn next">&gt;</button>
+        </div>
+    </div>
+</section>
+
+<section class="advantages" id="advantages">
+    <div class="container">
+        <h2 class="section-title">Наши преимущества</h2>
+        <div class="advantages__grid">
+            <div class="advantage">
+                <img src="{% static 'main/img/location.png' %}" alt="Удобное расположение" class="advantage__icon">
+                <h3 class="advantage__title">Удобное расположение</h3>
+            </div>
+            
+            <div class="advantage">
+                <img src="{% static 'main/img/service.png' %}" alt="Широкий спектр услуг" class="advantage__icon">
+                <h3 class="advantage__title">Широкий спектр услуг</h3>
+            </div>
+            
+            <div class="advantage">
+                <img src="{% static 'main/img/opt.png' %}" alt="Опыт работы" class="advantage__icon">
+                <h3 class="advantage__title">Опыт работы более 10 лет</h3>
+            </div>
+            
+            <div class="advantage">
+                <img src="{% static 'main/img/vibe.png' %}" alt="Атмосфера уюта" class="advantage__icon">
+                <h3 class="advantage__title">Атмосфера заботы и уюта</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="discount-section">
+    <div class="container">
+        <div class="discount-box">
+            <div class="discount-icon">
+                <img src="{% static 'main/img/percent.svg' %}" alt="Скидка 10%">
+            </div>
+            <div class="discount-content">
+                <div class="discount-info">
+                    <h2 class="discount-title">Скидка 10% новым клиентам</h2>
+                    <p class="discount-text">При первом посещении салона получите скидку 10% на любую услугу. Просто зарегистрируйтесь на сайте и предъявите профиль при визите.</p>
+                </div>
+                <div class="discount-action">
+                    <a href="#" class="discount-btn">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="specialists">
+    <div class="container">
+        <div class="specialists__content">
+            <!-- Блок с сертификатом (слева) -->
+            <div class="certificate">
+                <img src="{% static 'main/img/certificate1.jpg' %}" alt="Сертификат специалиста" class="certificate__image">
+            </div>
+            
+            <!-- Блок с текстом (справа) -->
+            <div class="specialists__info">
+                <h2 class="specialists__title">Наши специалисты</h2>
+                <p class="specialists__text">
+                    Наши специалисты — это команда опытных и сертифицированных мастеров, 
+                    каждый из которых — профессионал в своей бьюти-сфере. 
+                    Мы следим за трендами и искренне любим своё дело.
+                </p>
+                <a href="#" class="specialists__button">Смотреть работы</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <div class="container">
+        <h2 class="section-title">Отзывы наших клиентов</h2>
+        
+        <div class="reviews-slider">
+            <div class="reviews-slider__container">
+                <div class="reviews-slider__wrapper">
+                    <!-- Отзыв 1 -->
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Анна</span>
+                            </div>
+                            <p class="review-card__text">Очень довольна посещением салона! Мастер была внимательна к деталям, результат превзошел все ожидания. Обязательно вернусь снова.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 2 -->
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Мария</span>
+                            </div>
+                            <p class="review-card__text">Прекрасный сервис и приятная атмосфера. Сделали именно такую стрижку, какую я хотела. Рекомендую этот салон всем подругам!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 3 -->
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Елена</span>
+                            </div>
+                            <p class="review-card__text">Лучший маникюр в моей жизни! Очень аккуратно и красиво. Мастер настоящий профессионал своего дела. Буду постоянным клиентом.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 4 -->
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Ольга</span>
+                            </div>
+                            <p class="review-card__text">Отличный салон с приятными ценами. Делала окрашивание, цвет получился ровный и насыщенный. Спасибо мастеру за качественную работу!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 5 -->
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Надежда</span>
+                            </div>
+                            <p class="review-card__text">Здесь чуствуется настоящая забота о своих клиетах. Хожу в этот салон больше 5ти лет и ничего луше пока не находила по такому соотношению цены и качества.</p>
+                        </div>
+                    </div>
+
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Арина</span>
+                            </div>
+                            <p class="review-card__text">Маникюр, педикюр, прическа и реснички - все можно сделать в одном месте недалеко от дома, это ли не счастье. Уверена, что лучше салона в нашем городе нет.</p>
+                        </div>
+                    </div>
+
+                    <div class="reviews-slider__slide">
+                        <div class="review-card">
+                            <div class="review-card__header">
+                                <img src="{% static 'main/img/user-icon.svg' %}" alt="Клиент" class="review-card__photo">
+                                <span class="review-card__name">Ирина</span>
+                            </div>
+                            <p class="review-card__text">Впервые попала в этот салон и сразу влюбилась! Уютная атмосфера, профессиональные мастера и отличный результат. Теперь только сюда!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Навигация -->
+            <div class="reviews-slider__nav">
+                <button class="reviews-slider__nav-btn prev">&lt;</button>
+                <div class="reviews-slider__dots">
+                    <span class="reviews-slider__dot active"></span>
+                    <span class="reviews-slider__dot"></span>
+                </div>
+                <button class="reviews-slider__nav-btn next">&gt;</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'main/js/slider.js' %}"></script>
+<script src="{% static 'main/js/reviews-slider.js' %}"></script>
 {% endblock %}
