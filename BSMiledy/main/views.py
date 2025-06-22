@@ -5,3 +5,6 @@ def index(request):
 
 def politics(request):
     return render(request, 'main/politics.html')
+
+def contacts(request):
+    return render(request, 'main/contacts.html')

@@ -67,7 +67,15 @@ class Master(models.Model):
 
     def is_available_at(self, datetime, service):
         """Проверяет, свободен ли мастер в указанное время"""
-        return not self._has_conflicting_appointments(datetime, service) #проверяем есть ли вообще такие записи которые мешают нам записать человека. если да, возвращаем фолз
+        if not hasattr(self, 'schedule'):
+            return False
+            
+        # Проверяем конфликты с записями
+        if self._has_conflicting_appointments(datetime, service):
+            return False
+            
+        # Проверяем расписание
+        return self.schedule.is_available(datetime, service.duration)
 
     def _has_conflicting_appointments(self, datetime, service):
         new_end = datetime + timezone.timedelta(minutes=service.duration)

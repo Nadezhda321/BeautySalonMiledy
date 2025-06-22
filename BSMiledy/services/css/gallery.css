@@ -1,5 +1,7 @@
-/* Основные стили галереи */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .gallery-section {
+    font-family: 'Montserrat';
     padding: 40px 20px;
     max-width: 1400px;
     margin: 0 auto;
@@ -13,6 +15,12 @@
     gap: 10px;
     margin-bottom: 30px;
     padding: 0 20px;
+}
+
+h1{
+    color: #FF0099;
+    text-align: center;
+    margin: 0;
 }
 
 .filter-btn {

@@ -1,0 +1,47 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'main/css/contacts.css' %}">{% endblock %}
+
+{% block content %}
+<section class="contacts-section">
+    <h1>Контакты</h1>
+    
+    <div class="contacts-container">
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac526e20d5a0c9a0185eab01312396c9221880049a4c08a11bd63e752d758f776&amp;source=constructor" 
+                    width="100%" height="400" frameborder="0"></iframe>
+        </div>
+        
+        <div class="info-container">
+            <div class="contact-block">
+                <h2>Адрес</h2>
+                <p>г. Батайск, ДНТ "Труд", ул. 8-я линия, д. 646</p>
+            </div>
+            
+            <div class="contact-block">
+                <h2>Часы работы</h2>
+                <p>Ежедневно с 9:00 до 18:00</p>
+            </div>
+            
+            <div class="contact-block">
+                <h2>Контакты</h2>
+                <p>
+                    <a href="tel:+79991234567">+7 (909) 420-12-15</a><br>
+                    <a href="mailto:ndrio412@gmail.com">ndrio412@gmail.com</a><br>
+                    <a href="https://wa.me/79094201215" class="whatsapp-link">Написать в WhatsApp</a>
+                </p>
+            </div>
+            
+            <div class="contact-block">
+                <h2>Реквизиты</h2>
+                <p>
+                    ИНН: 614109943003<br>
+                    ОГРН: 317619600070555
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,21 +1,73 @@
-{% extends  'main/layout.html' %}
+{% extends 'main/layout.html' %}
+{% load static %}
 
-{% block title_page %}Услуги{% endblock %}
+{% block title %}Услуги{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'services/css/services_home.css' %}">{% endblock %}
 
 {% block content %}
-<h1>Услуги</h1>
-    <ul> 
-        <li>Ногтевой сервис</li>
-        <li>Косметология</li>
-        <li>Уход за волосами</li>
-    </ul>
-    <p><a href="{% url 'main:index' %}">Перейти на главную</a></p>
+<section class="services-section">
+    <h1>Наши услуги</h1>
+    
+    <div class="services-filter">
+        <button class="filter-btn active" data-filter="all">Все услуги</button>
+        {% for service_type in service_types %}
+        <button class="filter-btn" data-filter="type-{{ service_type.id }}">{{ service_type.name }}</button>
+        {% endfor %}
+    </div>
 
-    {% for el in service %}
-        <div class="service_card">
-            <h3>{{ el.name }}</h3>
-            <h5>{{ el.description }}</h5>
+    <div class="services-container">
+        {% for service in services %}
+        <div class="service-card" data-category="type-{{ service.type_service.id }}">
+            {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="{{ service.name }}" class="service-photo">
+            {% else %}
+            <div class="service-photo placeholder">Нет фото</div>
+            {% endif %}
+            
+            <div class="service-info">
+                <h3><a href="{% url 'services:service_detail' service.id %}">{{ service.name }}</a></h3>
+                <p class="service-description">
+                    {{ service.description|truncatechars:50 }}
+                </p>
+                <div class="service-meta">
+                    <span class="service-duration">{{ service.duration }} мин</span>
+                    <span class="service-price">
+                        {% if service.type_price == 'flexible' %}от {% endif %}
+                        {{ service.min_price }} ₽
+                    </span>
+                </div>
+                <a href="" class="book-btn">Записаться</a>
+            </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+</section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Удаляем активный класс у всех кнопок
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            serviceCards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
 {% endblock %}
+
+

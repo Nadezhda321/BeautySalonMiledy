@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ service.name }}{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'services/css/service_detail.css' %}">{% endblock %}
+
+{% block content %}
+<section class="service-detail-section">
+    <div class="service-container">
+        <div class="service-photo">
+            {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="{{ service.name }}">
+            {% else %}
+            <div class="photo-placeholder">Нет фото</div>
+            {% endif %}
+        </div>
+        
+        <div class="service-info">
+            <h1>{{ service.name }}</h1>
+            
+            <div class="service-meta">
+                <div class="price-block">
+                    <span class="price-label">Стоимость:</span>
+                    <span class="price-value">
+                        {% if service.type_price == 'flexible' %}от {% endif %}
+                        {{ service.min_price }} ₽
+                    </span>
+                </div>
+                
+                <div class="duration-block">
+                    <span class="duration-label">Длительность:</span>
+                    <span class="duration-value">{{ service.duration }} минут</span>
+                </div>
+            </div>
+            
+            <div class="service-description">
+                <h3>Описание услуги</h3>
+                <p>{{ service.description|linebreaks }}</p>
+            </div>
+            
+            <a href="" class="book-btn">Записаться</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
