@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TypeService, Service, PhotoService, Master, MasterSpecialization, Appointment
+from .models import TypeService, Service, PhotoService, Master, MasterSpecialization
 
 
 @admin.register(Service)
@@ -28,16 +28,3 @@ class MasterAdmin(admin.ModelAdmin):
 @admin.register(TypeService)
 class TypeServiceAdmin(admin.ModelAdmin):
     search_fields = ['name']
-
-
-@admin.register(Appointment)
-class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'service', 'master', 'datetime', 'status')
-    list_filter = ('status', 'master', 'service')
-    search_fields = ('user__username', 'master__name')
-    date_hierarchy = 'datetime'
-    actions = ['mark_canceled']
-
-    def mark_canceled(self, request, queryset):
-        queryset.update(status='canceled')
-    mark_canceled.short_description = "Отменить выбранные записи"

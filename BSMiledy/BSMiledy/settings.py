@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'services',
     'users',
     'schedule',
+    'appointment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,12 +155,3 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-
-EMAIL_HOST_USER = 'Nadya2zhuk@yandex.ru'
-EMAIL_HOST_PASSWORD = 'rolbmhiitfednclk'
-DEFOULT_FROM_EMAIL = 'Nadya2zhuk@yandex.ru'

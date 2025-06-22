@@ -38,7 +38,7 @@
                 <p>{{ service.description|linebreaks }}</p>
             </div>
             
-            <a href="" class="book-btn">Записаться</a>
+            <a href="{% url 'appointment:create' service.id %}" class="book-btn">Записаться</a>
         </div>
     </div>
 </section>

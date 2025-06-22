@@ -56,14 +56,15 @@
             <div class="footer__text">
                 <p><b>Новым клиентам</b></p>
                 <p><a href="{% url 'main:index' %}#advantages">О нас</a></p>
-                <p><a href="">Онлайн-запись</a></p>
+                <p><a href="{% url 'services:services_home' %}">Онлайн-запись</a></p>
                 <p><a href="{% url 'services:gallery' %}#advantages">Наши работы</a></p>
             </div>
             <div class="footer__text">
                 <p><b>Наши услуги</b></p>
-                <p><a href="">Ногтевой сервис</a></p>
-                <p><a href="">Парихмахерские услуги</a></p>
-                <p><a href="">Косметология</a></p>
+                <p><a href="{% url 'services:services_home' %}">Все услуги</a></p>
+                {% for service_type in service_types %}
+                <p><a href="{% url 'services:services_home' %}?type={{ service_type.id }}">{{ service_type.name }}</a></p>
+                {% endfor %}
             </div>
             <div class="footer__text">
                 <p><b>Контакты</b></p>

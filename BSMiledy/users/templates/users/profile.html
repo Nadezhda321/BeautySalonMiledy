@@ -1,24 +1,105 @@
-{% extends  'main/layout.html' %}
+{% extends 'main/layout.html' %}
+{% load static %}
 
-{% block title_page %}Мой профиль{% endblock %}
+{% block title_page %}Профиль{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Профиль пользователя</h1>
-<p>Привет, {{ user.username }}!</p>
-<p>Ваша почта: {{ user.email }}!</p>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
-<form action="{% url 'logout' %}?next=/users/profile" method="post">
-    {% csrf_token %}
-    <button type="submit">Выйти из профиля</button>
-</form>
+<div class="profile-container">
+    <!-- Блок с информацией пользователя -->
+    <div class="profile-header">
+        <div class="avatar">
+            <span class="avatar-initials">{{ user.first_name|first|upper }}{{ user.last_name|first|upper }}</span>
+        </div>
+        <h1>Профиль пользователя</h1>
+        <p class="welcome-message">Добро пожаловать, {{ user.first_name }} {{ user.last_name }}!</p>
+    </div>
 
-<form action="{% url 'password_change' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Сменить пароль</button>
-</form>
+    <!-- Контактная информация -->
+    <div class="profile-section">
+        <h2 class="section-title">Контактные данные</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">Email:</span>
+                <span class="info-value">{{ user.email }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Телефон:</span>
+                <span class="info-value">{{ user.phone|default:"Не указан" }}</span>
+            </div>
+        </div>
+    </div>
 
-<p><a href="{% url 'main:index' %}">Перейти на главную страницу</a></p>
+    <!-- Активные записи -->
+    <div class="profile-section">
+        <h2 class="section-title">Активные записи</h2>
+        {% if active_appointments %}
+        <div class="appointments-list">
+            {% for appointment in active_appointments %}
+            <div class="appointment-card">
+                <div class="appointment-info">
+                    <span class="service-name">{{ appointment.service.name }}</span>
+                    <span class="appointment-meta">
+                        {{ appointment.datetime|date:"d.m.Y" }} в {{ appointment.datetime|time:"H:i" }}
+                        • {{ appointment.master.name }}
+                    </span>
+                </div>
+                <div class="appointment-actions">
+                    <form action="{% url 'appointment:cancel' appointment.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-cancel">Отменить</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-appointments">У вас нет активных записей</p>
+        {% endif %}
+    </div>
 
+    <!-- Архивные записи -->
+    <div class="profile-section">
+        <h2 class="section-title">Архив записей</h2>
+        {% if archived_appointments %}
+        <div class="appointments-list archived">
+            {% for appointment in archived_appointments %}
+            <div class="appointment-card">
+                <div class="appointment-info">
+                    <span class="service-name">{{ appointment.service.name }}</span>
+                    <span class="appointment-meta">
+                        {{ appointment.datetime|date:"d.m.Y" }} в {{ appointment.datetime|time:"H:i" }}
+                        • {{ appointment.master.name }}
+                        <span class="status-badge {{ appointment.status }}">{{ appointment.get_status_display }}</span>
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-appointments">Архив записей пуст</p>
+        {% endif %}
+    </div>
 
-
+    <!-- Действия профиля -->
+    <div class="profile-actions">
+        <form action="{% url 'logout' %}?next=/" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn-action btn-logout">Выйти</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

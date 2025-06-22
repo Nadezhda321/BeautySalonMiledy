@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'appointment/css/create.css' %}">{% endblock %}
+{% block title %}Запись на {{ service.name }}{% endblock %}
+
+{% block content %}
+<div class="appointment-container" data-service-duration="{{ service.duration }}">
+    <h2>Запись на {{ service.name }}</h2>
+    <p>Длительность: {{ service.duration }} минут</p>
+    
+    <form method="post" class="appointment-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_master">Мастер:</label>
+            {{ form.master }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_date">Дата записи:</label>
+            {{ form.date }}
+        </div>
+        
+        {{ form.time }}
+        
+        <div class="form-group">
+            <label for="id_comment">Комментарий (необязательно):</label>
+            {{ form.comment }}
+        </div>
+        
+        <div id="available-slots" class="slots-container">
+            <div class="slots-title">Доступные слоты:</div>
+            <div class="slot-list"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Записаться</button>
+    </form>
+</div>
+
+<script src="{% static 'appointment/js/appointment.js' %}"></script>
+{% endblock %}

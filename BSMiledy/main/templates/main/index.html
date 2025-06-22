@@ -13,7 +13,7 @@
                 <div class="slider__content">
                     <h2 class="slider__title">Скидка 10% на первое посещение!</h2>
                     <p class="slider__text">Запишитесь через личный кабинет на нашем сайте на любую услугу и получите скидку 10% на первое посещение салона.</p>
-                    <a href="" class="slider__button">Записаться</a>
+                    <a href="{% url 'services:services_home' %}" class="slider__button">Записаться</a>
                 </div>
             </div>
             
@@ -85,7 +85,7 @@
                     <p class="discount-text">При первом посещении салона получите скидку 10% на любую услугу. Просто зарегистрируйтесь на сайте и предъявите профиль при визите.</p>
                 </div>
                 <div class="discount-action">
-                    <a href="#" class="discount-btn">Зарегистрироваться</a>
+                    <a href="{% url 'users:register' %}" class="discount-btn">Зарегистрироваться</a>
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
                     каждый из которых — профессионал в своей бьюти-сфере. 
                     Мы следим за трендами и искренне любим своё дело.
                 </p>
-                <a href="#" class="specialists__button">Смотреть работы</a>
+                <a href="{% url 'services:gallery' %}" class="specialists__button">Смотреть работы</a>
             </div>
         </div>
     </div>

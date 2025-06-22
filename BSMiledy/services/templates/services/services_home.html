@@ -36,7 +36,7 @@
                         {{ service.min_price }} ₽
                     </span>
                 </div>
-                <a href="" class="book-btn">Записаться</a>
+                <a href="{% url 'appointment:create' service.id %}" class="book-btn">Записаться</a>
             </div>
         </div>
         {% endfor %}

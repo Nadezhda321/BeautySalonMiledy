@@ -4,10 +4,23 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 from .forms import RegisterForm
 from django.contrib.auth import login
+from appointment.models import Appointment
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    active_appointments = Appointment.objects.filter(
+        user=request.user,
+        status='active'
+    ).order_by('datetime')
+    
+    archived_appointments = Appointment.objects.filter(
+        user=request.user
+    ).exclude(status='active').order_by('-datetime')
+    
+    return render(request, 'users/profile.html', {
+        'active_appointments': active_appointments,
+        'archived_appointments': archived_appointments,
+    })
 
 class RegisterView(FormView):
     form_class = RegisterForm

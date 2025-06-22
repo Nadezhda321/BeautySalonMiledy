@@ -1,0 +1,169 @@
+/* Основные стили */
+.appointment-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.appointment-container h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.appointment-container p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Стили формы */
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.form-group select,
+.form-group input[type="date"],
+.form-group textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group select:focus,
+.form-group input[type="date"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #FF0099;
+    box-shadow: 0 0 0 3px rgba(255, 0, 153, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Стили для слотов */
+.slots-container {
+    margin: 1.5rem 0;
+}
+
+.slots-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.slot-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.time-slot {
+    padding: 0.7rem 1.2rem;
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.time-slot:hover {
+    background: #fafafa;
+    border-color: #FF0099;
+    color: #FF0099;
+}
+
+.time-slot.selected {
+    background: #FF0099;
+    color: white;
+    border-color: #FF0099;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 153, 0.2);
+}
+
+/* Кнопка записи */
+.btn-primary {
+    background: #FF0099;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: #e0008a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 0, 153, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    color: #ff3860;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+.no-slots {
+    color: #888;
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+    .appointment-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .slot-list {
+        gap: 0.6rem;
+    }
+    
+    .time-slot {
+        padding: 0.6rem 1rem;
+    }
+}
