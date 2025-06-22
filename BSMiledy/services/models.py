@@ -70,11 +70,11 @@ class Master(models.Model):
         if not hasattr(self, 'schedule'):
             return False
             
-        # Проверяем расписание
+       
         if not self.schedule.is_available(datetime, duration_minutes):
             return False
             
-        # Проверяем конфликты с записями
+        
         new_end = datetime + timezone.timedelta(minutes=duration_minutes)
         return not self.appointments.filter(
             datetime__lt=new_end,
@@ -85,8 +85,8 @@ class Master(models.Model):
     def _has_conflicting_appointments(self, datetime, service):
         new_end = datetime + timezone.timedelta(minutes=service.duration)
         return self.appointments.filter(
-            datetime__lt=new_end, #фильтр беньше
-            datetime__gte=datetime - timezone.timedelta(minutes=service.duration), #больше или равно
+            datetime__lt=new_end, 
+            datetime__gte=datetime - timezone.timedelta(minutes=service.duration),
             status__in=['active', 'completed']
         ).exists()
 

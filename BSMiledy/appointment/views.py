@@ -1,4 +1,3 @@
-# appointment/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from datetime import datetime, timedelta
@@ -15,7 +14,7 @@ def create_appointment(request, service_id):
         form = AppointmentForm(request.POST, service=service, user=request.user)
         if form.is_valid():
             appointment = form.save()
-            return redirect('appointment:success')  # Перенаправляем на страницу успеха
+            return redirect('appointment:success')
     else:
         form = AppointmentForm(service=service, user=request.user)
     
@@ -36,23 +35,21 @@ def available_slots(request):
     except (Master.DoesNotExist, ValueError, TypeError):
         return JsonResponse({'slots': []})
     
-    # Получаем рабочие часы мастера на эту дату
     schedule = master.schedule
     start_time = schedule.default_start
     end_time = schedule.default_end
     lunch_start = schedule.lunch_start
     lunch_end = schedule.lunch_end
     
-    # Генерируем слоты с интервалом 30 минут
     slots = []
     current_time = datetime.combine(date, start_time)
     end_datetime = datetime.combine(date, end_time)
     
     while current_time + timedelta(minutes=duration) <= end_datetime:
-        # Проверяем, не попадает ли слот на перерыв
+
         current_time_time = current_time.time()
         if not (lunch_start <= current_time_time < lunch_end):
-            # Проверяем доступность мастера
+
             if master.is_available_at(current_time, duration):
                 slots.append({
                     'time': current_time.strftime('%H:%M'),

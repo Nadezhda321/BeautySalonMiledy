@@ -4,9 +4,6 @@ from django.utils.translation import gettext_lazy as _
 
 class ClientManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
-        """
-        Создает и сохраняет пользователя с указанным email и паролем
-        """
         if not email:
             raise ValueError('Пользователь должен иметь email адрес')
         
@@ -17,9 +14,6 @@ class ClientManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
-        """
-        Создает и сохраняет суперпользователя с указанным email и паролем
-        """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         

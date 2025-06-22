@@ -1,4 +1,3 @@
-/* Основные стили */
 .profile-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -40,7 +39,6 @@
     font-size: 1.1rem;
 }
 
-/* Секции профиля */
 .profile-section {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
@@ -66,7 +64,6 @@
     border-radius: 2px;
 }
 
-/* Контактная информация */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -91,7 +88,6 @@
     font-size: 1.1rem;
 }
 
-/* Список записей */
 .appointments-list {
     display: flex;
     flex-direction: column;
@@ -184,7 +180,7 @@
     border: 1px dashed #ddd;
 }
 
-/* Архивные записи */
+
 .appointments-list.archived .appointment-card {
     opacity: 0.8;
     background: #fafafa;
@@ -194,7 +190,7 @@
     opacity: 1;
 }
 
-/* Действия профиля */
+
 .profile-actions {
     display: flex;
     justify-content: center;
@@ -231,7 +227,6 @@
     color: white;
 }
 
-/* Добавьте в profile.css */
 .alert {
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -250,7 +245,6 @@
     border: 1px solid #FF0000;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .profile-container {
         padding: 1.5rem;

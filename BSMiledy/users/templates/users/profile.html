@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block title_page %}Профиль{% endblock %}
+{% block title %}Профиль{% endblock %}
 
 {% block link %}
 <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
@@ -19,7 +19,6 @@
 {% endif %}
 
 <div class="profile-container">
-    <!-- Блок с информацией пользователя -->
     <div class="profile-header">
         <div class="avatar">
             <span class="avatar-initials">{{ user.first_name|first|upper }}{{ user.last_name|first|upper }}</span>
@@ -28,7 +27,6 @@
         <p class="welcome-message">Добро пожаловать, {{ user.first_name }} {{ user.last_name }}!</p>
     </div>
 
-    <!-- Контактная информация -->
     <div class="profile-section">
         <h2 class="section-title">Контактные данные</h2>
         <div class="info-grid">
@@ -43,7 +41,6 @@
         </div>
     </div>
 
-    <!-- Активные записи -->
     <div class="profile-section">
         <h2 class="section-title">Активные записи</h2>
         {% if active_appointments %}
@@ -71,7 +68,6 @@
         {% endif %}
     </div>
 
-    <!-- Архивные записи -->
     <div class="profile-section">
         <h2 class="section-title">Архив записей</h2>
         {% if archived_appointments %}
@@ -94,7 +90,6 @@
         {% endif %}
     </div>
 
-    <!-- Действия профиля -->
     <div class="profile-actions">
         <form action="{% url 'logout' %}?next=/" method="post" class="logout-form">
             {% csrf_token %}

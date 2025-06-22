@@ -17,16 +17,15 @@ class RegisterForm(UserCreationForm):
     
     def clean_phone(self):
         phone = self.cleaned_data['phone']
-        # Удаляем ВСЕ нецифровые символы
+        
         cleaned_phone = re.sub(r'\D', '', phone)
         
-        # Проверяем что номер содержит 11 цифр и начинается с 7 или 8
         if len(cleaned_phone) != 11 or not cleaned_phone.startswith(('7', '8')):
             raise ValidationError(
                 "Введите 11-значный номер телефона, начинающийся с 7 или 8. "
                 "Пример: 79085093814 или 89085093814"
             )
-        return '+7' + cleaned_phone[1:]  # Всегда сохраняем в формате +7XXXXXXXXXX
+        return '+7' + cleaned_phone[1:]  
     
     def clean_birth_date(self):
         birth_date = self.cleaned_data['birth_date']
@@ -39,13 +38,13 @@ class RegisterForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Настройка минимальной длины пароля
+       
         self.fields['password1'].help_text = "Пароль должен содержать минимум 8 символов, включая буквы и цифры."
         
-        # Добавляем маску для телефона
+   
         self.fields['phone'].widget.attrs.update({
             'placeholder': '+7 (XXX) XXX-XX-XX',
-            'inputmode': 'tel'  # Для мобильных устройств
+            'inputmode': 'tel'  
         })
         
     class Meta:

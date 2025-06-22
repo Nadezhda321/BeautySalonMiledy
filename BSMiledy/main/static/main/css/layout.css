@@ -194,6 +194,54 @@ body {
     opacity: 0.8;
 }
 
+.cookies-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(40, 40, 40, 0.95);
+    color: white;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.cookies-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.cookies-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cookies-text a {
+    color: #FF0099;
+    text-decoration: underline;
+}
+
+.cookies-btn {
+    background: #FF0099;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 120px;
+    transition: background 0.3s;
+}
+
+.cookies-btn:hover {
+    background: #e0008a;
+}
+
 
 
 
@@ -261,6 +309,16 @@ body {
     
     .footer__text {
         text-align: center;
+    }
+
+    .cookies-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .cookies-btn {
+        width: 100%;
     }
 }
 

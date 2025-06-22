@@ -4,7 +4,6 @@ from services.models import Master
 from datetime import datetime
 from .models import Appointment
 
-# appointment/forms.py
 class AppointmentForm(forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.CharField(widget=forms.HiddenInput())  # Будет заполняться JS

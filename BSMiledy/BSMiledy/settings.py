@@ -3,30 +3,18 @@ from django.urls import reverse_lazy
 from dotenv import load_dotenv
 import os
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'., мой путь к проекту
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(dotenv_path="../.env")
 
-#для загрузки изображений пользователем
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [] #доменные имена где можно публиковать проект
-
-
-# Application definition
+ALLOWED_HOSTS = [] 
 
 INSTALLED_APPS = [
     'main',
@@ -42,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-#"плагины" для проекта
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,20 +64,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv("DB_NAME"),
-        # 'NAME': "beauty_salon",
         'USER': os.getenv("DB_USER"),
-        # 'USER': "postgres",
         'PASSWORD': os.getenv("DB_PASSWORD"),
-        # 'PASSWORD': "postgres",
         'HOST': os.getenv("DB_HOST"), 
-        # 'HOST': "localhost", 
         'PORT': os.getenv("DB_PORT"),
         'PORT': "5432",
     }
 } 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -107,10 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
@@ -119,17 +95,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_ROOT = '.'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

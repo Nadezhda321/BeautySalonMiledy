@@ -80,7 +80,6 @@
     background-color: #d80082;
 }
 
-/* Навигация */
 .slider__nav {
     position: absolute;
     bottom: 30px;
@@ -127,7 +126,6 @@
     background: #FF0099;
 }
 
-/* Секция "Наши преимущества" */
 .advantages {
     padding: 60px 0;
     background-image: url('../img/advantages-bg.png');
@@ -176,7 +174,7 @@
     margin-bottom: 15px;
 }
 
-/* Секция скидки */
+
 .discount-section {
     padding: 60px 0;
     background: white;
@@ -194,14 +192,14 @@
 }
 
 .discount-icon {
-    flex: 0 0 150px; /* Исправлено с 20px на 150px */
+    flex: 0 0 150px;
     padding-right: 10px;
 }
 
 .discount-icon img {
     width: 100%;
     height: auto;
-    max-width: 100px; /* Добавлено ограничение максимальной ширины */
+    max-width: 100px;
 }
 
 .discount-content {
@@ -387,7 +385,7 @@
     flex-grow: 1;
 }
 
-/* Стили для слайдера отзывов */
+
 .reviews-slider {
     position: relative;
     max-width: 1200px;
@@ -463,7 +461,7 @@
     }
     
     .slider__content {
-        width: 90%; /* Шире на мобилках */
+        width: 90%; 
         padding: 15px;
         top: 50%;
         left: 50%;
@@ -473,11 +471,11 @@
     .slider__title {
         font-size: 1.5rem;
         margin-bottom: 10px;
-        line-height: 1.3; /* Лучшая читаемость */
+        line-height: 1.3; 
     }
     
     .slider__text {
-        font-size: 0.9rem; /* Чуть уменьшим шрифт чтобы вмещалось больше текста */
+        font-size: 0.9rem;
         margin-bottom: 15px;
         line-height: 1.4;
     }
@@ -585,7 +583,7 @@
     }
     
     .slider__content {
-        width: 90%; /* Максимально широко на маленьких экранах */
+        width: 90%; 
         padding: 12px;
     }
     

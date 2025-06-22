@@ -1,4 +1,3 @@
-# models.py
 from django.db import models
 from django.utils import timezone
 from django.db.models import Q
@@ -15,22 +14,19 @@ class Schedule(models.Model):
         time = datetime.time()
         date = datetime.date()
         
-        # Проверяем глобальные нерабочие дни
         if DayOff.objects.filter(
             Q(reason='day_off') & 
             Q(date__lte=date, end_date__gte=date)
         ).exists():
             return False
-            
-        # Проверяем рабочие часы мастера
+        
         if not (self.default_start <= time <= self.default_end):
             return False
             
-        # Проверяем перерыв
+     
         if self.lunch_start <= time < self.lunch_end:
             return False
-            
-        # Проверяем отсутствия/отпуска
+          
         conflicting_days = self.days_off.filter(
             Q(date__lte=date, end_date__gte=date)
         )

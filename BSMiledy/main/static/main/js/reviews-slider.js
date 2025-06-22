@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const translateValue = -currentIndex * slideWidth;
         sliderWrapper.style.transform = `translateX(${translateValue}%)`;
         
-        // Обновляем активные точки
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === Math.floor(currentIndex / slidesToShow));
         });
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Обработчики событий
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
     
@@ -61,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('resize', handleResize);
     
-    // Автопереключение
     let slideInterval = setInterval(() => {
         if (currentIndex >= totalSlides - slidesToShow) {
             currentIndex = 0;
@@ -83,6 +80,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     });
     
-    // Инициализация
     updateSlider();
 });

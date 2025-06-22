@@ -45,3 +45,5 @@ class Appointment(models.Model):
                 name='unique_user_datetime'
             ),
         ]
+        verbose_name = 'Запись'
+        verbose_name_plural = 'Записи'

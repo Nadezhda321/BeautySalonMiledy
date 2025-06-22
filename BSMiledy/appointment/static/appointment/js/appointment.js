@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     let selectedMaster = null;
-    
-    // Обработчик выбора мастера
     if (masterSelect) {
         masterSelect.addEventListener('change', function() {
             selectedMaster = this.value;
@@ -17,8 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dateInput.disabled = !selectedMaster;
         });
     }
-    
-    // Обработчик выбора даты
+
     if (dateInput) {
         dateInput.addEventListener('change', function() {
             if (!selectedMaster) return;

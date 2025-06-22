@@ -1,4 +1,3 @@
-/* Основные стили */
 .services-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -11,7 +10,6 @@
     margin-bottom: 30px;
 }
 
-/* Фильтры */
 .services-filter {
     display: flex;
     flex-wrap: wrap;
@@ -37,7 +35,7 @@
     color: white;
 }
 
-/* Карточки услуг */
+
 .services-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -132,7 +130,7 @@
     background-color: #e0008a;
 }
 
-/* Адаптивность */
+
 @media (max-width: 768px) {
     .services-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

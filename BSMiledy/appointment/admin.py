@@ -1,4 +1,3 @@
-# appointments/admin.py
 import csv
 from django.contrib import admin
 from django.http import HttpResponse
@@ -8,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 from .models import Appointment
 from services.models import Master, Service
 
-# Фильтры
 class FutureAppointmentFilter(admin.SimpleListFilter):
     title = _('Будущие записи')
     parameter_name = 'future'
@@ -26,7 +24,6 @@ class FutureAppointmentFilter(admin.SimpleListFilter):
         if self.value() == 'no':
             return queryset.filter(datetime__lt=now)
 
-# Actions
 def mark_as_completed(modeladmin, request, queryset):
     queryset.update(status='completed')
 mark_as_completed.short_description = "Отметить как завершенные"
@@ -54,7 +51,6 @@ def export_to_csv(modeladmin, request, queryset):
     return response
 export_to_csv.short_description = "Экспорт в CSV"
 
-# Admin class
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = ('user', 'service', 'service_type', 'master', 'formatted_datetime', 'status')

@@ -8,33 +8,27 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSlide = 0;
     const slideCount = slides.length;
     
-    // Инициализация слайдера
     function initSlider() {
         updateSlider();
-        
-        // Автоматическое перелистывание (опционально)
         setInterval(() => {
             nextSlide();
         }, 5000);
     }
-    
-    // Обновление слайдера
+
     function updateSlider() {
         sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Обновление активной точки
+
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
     }
-    
-    // Следующий слайд
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slideCount;
         updateSlider();
     }
     
-    // Предыдущий слайд
+
     function prevSlide() {
         currentSlide = (currentSlide - 1 + slideCount) % slideCount;
         updateSlider();
@@ -52,6 +46,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Запуск слайдера
     initSlider();
 });
